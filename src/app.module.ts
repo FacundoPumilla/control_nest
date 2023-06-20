@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { ControlModule } from './controles/control.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { DatoModule } from './dato/dato.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       timezone: process.env.TZ,
     }),
     ControlModule,
+    DatoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

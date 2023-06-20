@@ -9,7 +9,7 @@ import {
   Put,
   Res,
 } from '@nestjs/common';
-import { CreateControlDto } from './dto/create-control-dto/create-control-dto';
+import { CreateControlDto } from './dto/create-control-dto';
 import { ControlService } from './control.service';
 
 @Controller('controles')
@@ -86,7 +86,7 @@ export class ControlesController {
       .catch(() => {
         response
           .status(HttpStatus.FORBIDDEN)
-          .json({ mensaje: 'Control no encontrado' });
+          .json({ mensaje: 'Control no encontrado o no' });
       });
   }
 }

@@ -5,7 +5,6 @@ import { ConfigService } from '@nestjs/config';
 export class AppService {
   @Inject(ConfigService)
   public config: ConfigService;
-
   getHello(): string {
     return 'Hello World!';
   }
