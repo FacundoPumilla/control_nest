@@ -1,0 +1,31 @@
+@host = http://{{$dotenv APP_URL}}
+@port = {{$dotenv APP_PORT}}
+
+### Metodos GET
+#En la raiz
+GET {{host}}:{{port}}/controles
+
+###
+POST {{host}}:{{port}}/controles/
+Content-Type: application/json
+
+{
+  "macnumber": "algo"
+}
+
+### Cambiar numero mac
+PUT {{host}}:{{port}}/controles/21
+Content-Type: application/json
+
+{
+  "macnumber": "acarolhff"
+}
+
+
+### Cambiar estado del control
+PUT {{host}}:{{port}}/controles/active
+Content-Type: application/json
+
+{
+  "id": "21"
+}

@@ -16,7 +16,7 @@ export class Control {
   @Column()
   macnumber: string;
 
-  @Column({
+  @Column('boolean', {
     default: false,
   })
   isActive: boolean;

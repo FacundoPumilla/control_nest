@@ -30,6 +30,20 @@ export class ControlesController {
       });
   }
 
+  @Put('active')
+  activeControl(@Body('id') id: number, @Res() response) {
+    return this.constrolService
+      .changeControlisActive(id)
+      .then((control) => {
+        response.status(HttpStatus.OK).json(control);
+      })
+      .catch(() => {
+        response.status(HttpStatus.FORBIDDEN).json({
+          mensaje: 'Imposible cambiar el estado del id ' + id,
+        });
+      });
+  }
+
   @Get()
   getAll(@Res() response) {
     return this.constrolService

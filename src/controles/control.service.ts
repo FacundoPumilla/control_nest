@@ -3,6 +3,7 @@ import { Control } from './entities/control.entity';
 import { Repository } from 'typeorm';
 import { CreateControlDto } from './dto/create-control-dto';
 import { InjectRepository } from '@nestjs/typeorm';
+import { response } from 'express';
 
 @Injectable()
 export class ControlService {
@@ -53,5 +54,33 @@ export class ControlService {
       return control;
     }
     throw new NotFoundException('Control no encontrado');
+  }
+  async getForMacNumber(macnumber: string): Promise<Control> {
+    try {
+      const mac = await this.controlRepository.findOne({
+        where: {
+          macnumber: macnumber,
+        },
+      });
+      if (mac) return mac;
+    } catch (error) {
+      console.log('error en el servico -> ' + error);
+      return error;
+    }
+  }
+  async changeControlisActive(idControl: number): Promise<Control> {
+    const change = await this.controlRepository.findOne({
+      where: {
+        id: idControl,
+      },
+    });
+    console.log('Estado del control -> ' + change.isActive);
+    if (change.isActive) {
+      change.isActive = false;
+      return this.controlRepository.save(change);
+    } else {
+      change.isActive = true;
+      return this.controlRepository.save(change);
+    }
   }
 }
