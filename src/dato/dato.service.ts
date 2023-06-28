@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Dato } from './dato';
+import { Dato } from './dato.entity';
 import { Repository } from 'typeorm';
 import { createDatoDto } from './dato-create.dto';
 

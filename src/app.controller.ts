@@ -1,5 +1,6 @@
 import { Controller, Get, Headers, HttpStatus, Ip, Res } from '@nestjs/common';
 import { ControlService } from './controles/control.service';
+import { exec } from 'child_process';
 
 @Controller()
 export class AppController {
@@ -24,6 +25,12 @@ export class AppController {
         });
       });
     console.log(getMacNumber);
+    const ejec = exec('df /home/facundo', (err, out, stderr) => {
+      if (err) console.log(err);
+      if (stderr) console.log(stderr);
+      if (out) console.log(out);
+      else console.log(ejec);
+    });
     // response.json({ mensaje: 'Obteniendo datos desde aca' + req });
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Control } from './entities/control.entity';
+import { Control } from './control.entity';
 import { Repository } from 'typeorm';
-import { CreateControlDto } from './dto/create-control-dto';
+import { CreateControlDto } from './create-control-dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { response } from 'express';
 
@@ -18,6 +18,7 @@ export class ControlService {
   async createControl(controlNuevo: CreateControlDto): Promise<Control> {
     const newControl = new Control();
     newControl.macnumber = controlNuevo.macnumber;
+    newControl.imei = controlNuevo.imei;
     return this.controlRepository.save(newControl);
   }
   async updateControl(
@@ -74,7 +75,7 @@ export class ControlService {
         id: idControl,
       },
     });
-    console.log('Estado del control -> ' + change.isActive);
+    console.log('Estado anterior del control -> ' + change.isActive);
     if (change.isActive) {
       change.isActive = false;
       return this.controlRepository.save(change);

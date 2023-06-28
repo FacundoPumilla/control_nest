@@ -2,7 +2,6 @@
 @port = {{$dotenv APP_PORT}}
 
 ### Metodos GET
-#En la raiz
 GET {{host}}:{{port}}/controles
 
 ###
@@ -10,7 +9,8 @@ POST {{host}}:{{port}}/controles/
 Content-Type: application/json
 
 {
-  "macnumber": "algo"
+  "macnumber": "AC0BFBCF8138",
+  "imei": "864764033677903"
 }
 
 ### Cambiar numero mac
@@ -27,5 +27,8 @@ PUT {{host}}:{{port}}/controles/active
 Content-Type: application/json
 
 {
-  "id": "21"
+  "id": "27"
 }
+
+### Raiz
+GET {{host}}:{{port}}

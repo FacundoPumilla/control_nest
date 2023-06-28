@@ -1,4 +1,4 @@
-import { Dato } from 'src/dato/dato';
+import { Dato } from 'src/dato/dato.entity';
 import {
   Column,
   CreateDateColumn,
@@ -16,6 +16,9 @@ export class Control {
   @Column()
   macnumber: string;
 
+  @Column()
+  imei: string;
+
   @Column('boolean', {
     default: false,
   })
@@ -28,5 +31,5 @@ export class Control {
   updated_at: Date;
 
   @OneToMany(() => Dato, (dato) => dato.control)
-  datos: Dato[];
+  datos: Dato;
 }

@@ -1,6 +1,17 @@
-import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpStatus,
+  Param,
+  Post,
+  Query,
+  Res,
+} from '@nestjs/common';
 import { DatoService } from './dato.service';
 import { createDatoDto } from './dato-create.dto';
+
+const tim = Date.now().toString();
 
 @Controller('dato')
 export class DatoController {
@@ -19,12 +30,27 @@ export class DatoController {
         });
       });
   }
+  @Get('id')
+  getLimit10ById(@Res() response, @Query() id: number): any {
+    console.log(id + ' ' + 'time-> ' + tim);
+    return this.datoService
+      .getOne(id['id'])
+      .then((listControl) => {
+        response.status(HttpStatus.OK).json(listControl);
+      })
+      .catch(() => {
+        response
+          .status(HttpStatus.FORBIDDEN)
+          .json({ mesnsaje: 'No se encontro el id' });
+      });
+  }
   @Get()
-  getAll(@Res() response) {
+  getAll(@Res() response, @Param() id: any) {
     return this.datoService
       .getAll()
       .then((datosList) => {
-        response.status(HttpStatus.OK).json(datosList);
+        console.log(id + ' EL getall _time-> ' + tim);
+        response.status(HttpStatus.OK).json({ id, datosList });
       })
       .catch(() => {
         response

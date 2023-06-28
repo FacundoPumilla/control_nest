@@ -9,7 +9,7 @@ import {
   Put,
   Res,
 } from '@nestjs/common';
-import { CreateControlDto } from './dto/create-control-dto';
+import { CreateControlDto } from './create-control-dto';
 import { ControlService } from './control.service';
 
 @Controller('controles')

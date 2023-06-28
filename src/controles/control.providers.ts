@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Control } from './entities/control.entity';
+import { Control } from './control.entity';
 
 export const controlProviders = [
   {

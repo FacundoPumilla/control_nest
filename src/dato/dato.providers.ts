@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Dato } from './dato';
+import { Dato } from './dato.entity';
 
 export const datoProviders = [
   {

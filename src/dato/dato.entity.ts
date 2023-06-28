@@ -1,9 +1,8 @@
-import { Control } from 'src/controles/entities/control.entity';
+import { Control } from 'src/controles/control.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';

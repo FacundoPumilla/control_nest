@@ -1,0 +1,15 @@
+@host = http://{{$dotenv APP_URL}}
+@port = {{$dotenv APP_PORT}}
+@url = {{host}}:{{port}}
+
+### Obtiene todos lo registros
+GET {{url}}/auth
+
+### Envio datos por post
+POST {{url}}/auth
+token: AABBCCDD
+Content-Type: application/json
+
+{
+  "mac":"aaddvvss"
+}
