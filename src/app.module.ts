@@ -5,7 +5,6 @@ import { ConfigModule } from '@nestjs/config';
 import { ControlModule } from './controles/control.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatoModule } from './dato/dato.module';
-import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
