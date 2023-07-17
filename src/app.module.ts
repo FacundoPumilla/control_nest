@@ -6,6 +6,7 @@ import { ControlModule } from './controles/control.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatoModule } from './dato/dato.module';
 import { AuthModule } from './auth/auth.module';
+import { PreCheckCelModule } from './pre-check-cel/pre-check-cel.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { AuthModule } from './auth/auth.module';
     ControlModule,
     DatoModule,
     AuthModule,
+    PreCheckCelModule,
   ],
   controllers: [AppController],
   providers: [AppService],

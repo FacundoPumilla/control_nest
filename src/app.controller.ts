@@ -43,12 +43,12 @@ export class AppController {
     console.log('numero:', nph + 'texto:', tph);
     const comm = `gammu sendsms text ${nph}  -text "${tph}"`;
     console.log(comm);
-    const ejec = exec(comm, (err, out, stderr) => {
+    const ejec = await exec(comm, (err, out, stderr) => {
       if (err) console.log(err);
       if (stderr) console.log(stderr);
       if (out) console.log(out);
       else console.log(ejec);
     });
-    response.json({ mensaje: 'Obteniendo datos desde aca', body });
+    response.json({ mensaje: 'Obteniendo datos desde aca', comm });
   }
 }
