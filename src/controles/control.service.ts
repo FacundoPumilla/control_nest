@@ -1,9 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+
 import { Control } from './control.entity';
 import { Repository } from 'typeorm';
 import { CreateControlDto } from './create-control-dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { response } from 'express';
+import { FromControlDto } from './fromControlDto';
 
 @Injectable()
 export class ControlService {
@@ -32,6 +33,21 @@ export class ControlService {
     });
     newControl.macnumber = controlActualiza.macnumber;
     return this.controlRepository.save(newControl);
+  }
+  async updateFromControl(fromControlDto: FromControlDto): Promise<Control> {
+    try {
+      const controlNew = await this.controlRepository.findOne({
+        where: {
+          macnumber: fromControlDto.macnumber,
+        },
+      });
+      if (controlNew) {
+        controlNew.token = fromControlDto.token;
+        return this.controlRepository.save(controlNew);
+      }
+    } catch (error) {
+      throw new NotFoundException('No se encontro imei');
+    }
   }
   async deleteControl(idControl: number): Promise<any> {
     const newControl = await this.controlRepository.findOne({

@@ -19,6 +19,9 @@ export class Control {
   @Column()
   imei: string;
 
+  @Column({ default: 'NoToken' })
+  token: string;
+
   @Column('boolean', {
     default: false,
   })

@@ -28,6 +28,13 @@ export class Dato {
   })
   te: number;
 
+  @Column({
+    type: 'decimal',
+    precision: 10,
+    scale: 2,
+  })
+  vo: number;
+
   @Column()
   r1: boolean;
 

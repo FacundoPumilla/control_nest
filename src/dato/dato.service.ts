@@ -35,6 +35,7 @@ export class DatoService {
       newDato.siw = datoNuevo.siw;
       newDato.sig = datoNuevo.sig;
       newDato.te = datoNuevo.te;
+      newDato.vo = datoNuevo.vo;
       newDato.r1 = datoNuevo.r1;
       newDato.r2 = datoNuevo.r2;
       newDato.err = datoNuevo.err;
